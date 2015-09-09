@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use postgresql as the database for Active Record
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -41,5 +41,23 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-end
 
+  # Automated tests in general
+  gem "rspec-rails", "~> 3.3.3"
+
+  # Mock rails models
+  gem "factory_girl_rails", "~> 4.4.1"
+
+  # Generate random data for factories
+  gem "faker", "~> 1.5.0"
+
+  # Show test coverage of the aplication
+  gem "simplecov", "~> 0.10.0", require: false
+
+  # TEMPORARY
+  # Not sure if i need this.
+  gem "rspec-its"
+
+  # Make easier to test for associations
+  gem 'shoulda'
+end
