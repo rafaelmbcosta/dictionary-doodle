@@ -6,9 +6,9 @@ RSpec.describe Search, :type => :model do
     it { should have_many :entries }
   end
 
-  let!(:successful_search) { FactoryGirl.create(:search, word: 'car') }
+  let!(:successful_search) { FactoryGirl.build(:search, word: 'car') }
   let!(:successful_response) { Search.access_webservice_information(successful_search.word) }
-  let!(:fail_search) { FactoryGirl.create(:search, word: 'ferrim') }
+  let!(:fail_search) { FactoryGirl.build(:search, word: 'ferrim') }
   let!(:fail_response) { Search.access_webservice_information(fail_search.word) }
 
   #Service is stubbed (see rails helper)
@@ -22,5 +22,14 @@ RSpec.describe Search, :type => :model do
         expect(fail_response["entry_list"]).to include("suggestion")
       end
     end
+
+  describe "Scope 'save_data'" do
+    it "saves if service finds any entry" do
+      expect(Search.save_data(successful_search.word, successful_response)).to eq(true)
+      search = Search.all.where("word = ?", successful_search.word).first
+      entries = Entry.all.where("search_id = ?", search.id)
+      expect(entries).not_to be_empty
+    end
+  end
 
 end
