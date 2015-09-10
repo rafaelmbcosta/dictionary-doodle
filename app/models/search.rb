@@ -12,4 +12,20 @@ class Search < ActiveRecord::Base
     return Hash.from_xml(response)
   end
 
+  def self.save_data(word, data_hash)
+    search = Search.new(word: word)
+    data_hash["entry_list"]["entry"].each do |data_entry|
+      entry = Entry.new(word: data_entry["ew"], grammar_group: data_entry["fl"])
+      if data_entry["def"]["dt"].instance_of?(Array)
+        data_entry["def"]["dt"].each do |data_example|
+          example = Example.new(text: data_example)
+          entry.examples << example
+        end
+      else
+        entry.examples << Example.new(text: data_entry["def"]["dt"])
+      end
+      search.entries << entry
+    end
+    return search.save
+  end
 end
