@@ -11,25 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150909133523) do
+ActiveRecord::Schema.define(version: 20150910142233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "meanings", force: :cascade do |t|
-    t.string   "word"
-    t.integer  "query_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "entries", force: :cascade do |t|
+    t.string  "word"
+    t.string  "grammar_group"
+    t.integer "search_id"
   end
 
-  add_index "meanings", ["query_id"], name: "index_meanings_on_query_id", using: :btree
+  add_index "entries", ["search_id"], name: "index_entries_on_search_id", using: :btree
 
-  create_table "queries", force: :cascade do |t|
-    t.string   "word"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "examples", force: :cascade do |t|
+    t.string  "text"
+    t.integer "entry_id"
   end
 
-  add_foreign_key "meanings", "queries"
+  add_index "examples", ["entry_id"], name: "index_examples_on_entry_id", using: :btree
+
+  create_table "searches", force: :cascade do |t|
+    t.string "word"
+  end
+
+  add_foreign_key "entries", "searches"
+  add_foreign_key "examples", "entries"
 end

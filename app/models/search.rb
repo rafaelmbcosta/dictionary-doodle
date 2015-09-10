@@ -1,4 +1,6 @@
-class Query < ActiveRecord::Base
+class Search < ActiveRecord::Base
+
+  has_many :entries, class_name: 'Entry'
 
   # Return a hash containing the translation sugestions
   # return should be in the format: {"entry_list"=>{"version"=>"1.0", "suggestion"=>["sugestion1", "sugestion2"]}}
