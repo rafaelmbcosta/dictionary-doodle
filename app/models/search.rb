@@ -28,4 +28,31 @@ class Search < ActiveRecord::Base
     end
     return search.save
   end
+
+  # find word in database
+  # if it doesn't find, get from webservice
+  # if it doesn't find on webservice, put a flag 'found' = false and return the suggestions
+  # made it recursive so i have the same return
+  def self.find_word(word)
+    result = Hash.new
+    search = Search.all.where("word = ?", word).first
+    if search.nil?
+      response = access_webservice_information(word)
+      #word not on database but is found on the webservice
+      if response["entry_list"].include?("entry")
+        save_data(word, response)
+        return find_word(word)
+      else
+        #word is neither on database and webservice
+        result["found"] = false
+        result["data"] = response["entry_list"]
+        return result
+      end
+    else
+      #word is in database and will be passed through data
+      result["found"] = true
+      result["data"] = search
+    end
+    return result
+  end
 end
