@@ -4,8 +4,7 @@ class SearchesController < ApplicationController
   end
 
   def find_word
-    #@result = Search.find_word(params["search"]["word"])
-    @result = {"found" => true, "data" => Search.first}
+    @result = Search.find_word(params["search"]["word"])
     respond_to do |format|
       format.js
     end

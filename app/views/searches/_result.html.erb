@@ -4,7 +4,17 @@
       <% if result["found"] %>
         <ol>
           <% result["data"].entries.each do |entry| %>
-            <li><b><%= "#{entry.word} (#{entry.grammar_group})" %></b></li>
+            <li>
+              <b><%= "#{entry.word} (#{entry.grammar_group})" %></b>
+              <% unless entry.examples.empty? %>
+                <p> Examples: </p>
+                <ul>
+                  <% entry.examples.each do |example| %>
+                    <%= example.text %>
+                  <% end %>
+                </ul>
+              <% end %>
+            </li>
           <% end %>
         </ol>
       <% end %>
