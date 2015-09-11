@@ -1,5 +1,7 @@
 # README (em construção) #
 
+Link do projeto no Pivotal Tracker: [https://www.pivotaltracker.com/n/projects/1424530](https://www.pivotaltracker.com/n/projects/1424530)
+
 ### Resumo ###
 
 Este projeto é uma proposta de solução para o seguinte teste: [https://gist.github.com/rgalba/b8244d02df17be94c6ef](https://gist.github.com/rgalba/b8244d02df17be94c6ef). Utiliza testes unitários e funcionais com RSpec, cabybara. Os relatórios são feitos com o Simplecov. Para testes do webservice, foi utilizado o webmocha para fazer os stubs.
