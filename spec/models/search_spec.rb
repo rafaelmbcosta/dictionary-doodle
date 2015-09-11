@@ -15,7 +15,7 @@ RSpec.describe Search, :type => :model do
   describe "Scope 'access_webservice_information'" do
       it "if search matches, it should return and hash with entries" do
         expect(successful_response).to be_instance_of(Hash)
-        expect(successful_response).to include("entry_list")
+        expect(successful_response["entry_list"]).to include("entry")
       end
 
       it "if search fails, it should return suggestions" do
@@ -30,6 +30,31 @@ RSpec.describe Search, :type => :model do
       entries = Entry.all.where("search_id = ?", search.id)
       expect(entries).not_to be_empty
     end
+  end
+
+  describe "Scope 'find_word'" do
+    it "Word is found on database" do
+      search = FactoryGirl.create(:search_with_entries)
+      response = Search.find_word(search.word)
+      expect(response["found"]).to eq(true)
+      expect(response["data"]).to be_instance_of(Search)
+    end
+
+    it "Word not found on database, but is found on webservice" do
+      response = Search.find_word(successful_search.word)
+      expect(response["found"]).to eq(true)
+      expect(response["data"]).to be_instance_of(Search)
+    end
+
+    it "Word not found neither database and webservice " do
+      response = Search.find_word(fail_search.word)
+      expect(response["found"]).to eq(false)
+      expect(response["data"]).to include("suggestion")
+    end
+
+
+
+
   end
 
 end
