@@ -36,9 +36,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
-  # Mock and stub methods
-  gem 'webmock', '~> 1.21.0'
-
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
@@ -57,10 +54,17 @@ group :development, :test do
   # Show test coverage of the aplication
   gem "simplecov", "~> 0.10.0", require: false
 
-  # TEMPORARY
-  # Not sure if i need this.
+  # Used in rspec tests
   gem "rspec-its"
 
   # Make easier to test for associations
   gem 'shoulda'
+
+  # Functional testing
+  gem 'capybara'
+end
+
+group :test do
+  # Mock and stub methods
+  gem 'webmock', '~> 1.21.0'
 end

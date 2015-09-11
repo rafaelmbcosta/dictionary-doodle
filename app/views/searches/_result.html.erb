@@ -1,0 +1,23 @@
+<div id="result" class="panel panel-info"  style="display:show">
+  <div class="panel-heading"><b>Significados para '<%= result["data"].word if result["found"] %>'</b></div>
+    <div class="panel-body">
+      <% if result["found"] %>
+        <ol>
+          <% result["data"].entries.each do |entry| %>
+            <li>
+              <b><%= "#{entry.word} (#{entry.grammar_group})" %></b>
+              <% unless entry.examples.empty? %>
+                <p> Examples: </p>
+                <ul>
+                  <% entry.examples.each do |example| %>
+                    <%= example.text %>
+                  <% end %>
+                </ul>
+              <% end %>
+            </li>
+          <% end %>
+        </ol>
+      <% end %>
+    </div>
+  </div>
+</div>
