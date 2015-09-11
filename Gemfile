@@ -57,10 +57,12 @@ group :development, :test do
   # Show test coverage of the aplication
   gem "simplecov", "~> 0.10.0", require: false
 
-  # TEMPORARY
-  # Not sure if i need this.
+  # Used in rspec tests
   gem "rspec-its"
 
   # Make easier to test for associations
   gem 'shoulda'
+
+  # Functional testing
+  gem 'capybara'
 end
