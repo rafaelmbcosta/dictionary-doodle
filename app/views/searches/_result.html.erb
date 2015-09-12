@@ -1,5 +1,5 @@
 <div id="result" class="panel panel-info"  style="display:show">
-  <div class="panel-heading"><b>Significados para '<%= result["data"].word if result["found"] %>'</b></div>
+  <div class="panel-heading"><b>Significados  <%= "para '#{result["data"].word}" if result["found"] %></b></div>
     <div class="panel-body">
       <% if result["found"] %>
         <ol>
@@ -7,7 +7,6 @@
             <li>
               <b><%= "#{entry.word} (#{entry.grammar_group})" %></b>
               <% unless entry.examples.empty? %>
-                <p> Examples: </p>
                 <ul>
                   <% entry.examples.each do |example| %>
                     <%= example.text %>
@@ -17,6 +16,13 @@
             </li>
           <% end %>
         </ol>
+      <% else %>
+        <p> Resultado não encontrado, tente alguma das seguintes palavras </p>
+        <ul>
+          <%= result["data"]['suggestion'].each do |suggestion| %>
+            <li> <%= suggestion %></li>
+          <% end %>
+        </ul>
       <% end %>
     </div>
   </div>
