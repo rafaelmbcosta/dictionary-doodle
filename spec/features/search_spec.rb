@@ -7,8 +7,5 @@ describe "View screen" do
     expect(page).to have_text("Dicionário")
   end
 
-  scenario "When I fill search field with 'car' I expect to see 'car bomb'" do
-
-  end
 end
 
