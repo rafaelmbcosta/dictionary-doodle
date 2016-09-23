@@ -20,16 +20,6 @@ Neste projeto utilizamos as seguintes versões
 1. Ruby versão 2.2.2
 2. Rails 4.2.3
 
-
-Para instalar a aplicação deve realizar as seguintes operações:
- 
-1. Fazer o clone da aplicação https://RafaelCosta@bitbucket.org/RafaelCosta/dictionary.git
-2. Executar o comando 'bundle install'
-
-.
-.
-.
-
 ### Problemas na instalação ###
 
 É possível que se depare com os erros na instalação do projeto
