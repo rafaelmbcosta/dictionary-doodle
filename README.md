@@ -1,31 +1,14 @@
-# README (em construção) #
+# README  #
 
-Link do projeto no Pivotal Tracker: [https://www.pivotaltracker.com/n/projects/1424530](https://www.pivotaltracker.com/n/projects/1424530)
+Pivotal Tracker link of this project: [https://www.pivotaltracker.com/n/projects/1424530](https://www.pivotaltracker.com/n/projects/1424530)
 
 ### Resumo ###
 
-Este projeto é uma proposta de solução para o seguinte teste: [https://gist.github.com/rgalba/b8244d02df17be94c6ef](https://gist.github.com/rgalba/b8244d02df17be94c6ef). Utiliza testes unitários e funcionais com RSpec, cabybara. Os relatórios são feitos com o Simplecov. Para testes do webservice, foi utilizado o webmocha para fazer os stubs.
+This project is a doodle for this test: [https://gist.github.com/rgalba/b8244d02df17be94c6ef](https://gist.github.com/rgalba/b8244d02df17be94c6ef).
 
-### Versões ###
+### Version ###
 
-Neste projeto utilizamos as seguintes versões
+The following versions were used in this project
+
 * ruby 2.2.2
 * rails 4.2.3
-
-### Instalando a aplicação ###
-
-É necessário que se tenha previamente:
-(RVM recomendado)
-
-1. Ruby versão 2.2.2
-2. Rails 4.2.3
-
-### Problemas na instalação ###
-
-É possível que se depare com os erros na instalação do projeto
-
-1. An error occurred while installing safe_yaml (1.0.4), and Bundler cannot continue.
-SOLUÇÃO: rodar gem install safe_yaml antes de rodar o bundle install
-
-2. An error occurred while installing crack (0.4.2), and Bundler cannot continue.
-SOLUÇÃO: rodar gem install crack -v '0.4.2' antes de rodar o bundle install
