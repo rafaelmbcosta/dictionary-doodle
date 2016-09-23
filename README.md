@@ -2,7 +2,7 @@
 
 Pivotal Tracker link of this project: [https://www.pivotaltracker.com/n/projects/1424530](https://www.pivotaltracker.com/n/projects/1424530)
 
-### Resumo ###
+### Description ###
 
 This project is a doodle for this test: [https://gist.github.com/rgalba/b8244d02df17be94c6ef](https://gist.github.com/rgalba/b8244d02df17be94c6ef).
 
